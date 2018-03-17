@@ -44,7 +44,10 @@
   <ItemGroup>
     <Compile Include="Command.cs" />
     <Compile Include="CommandWords.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="InputHandler.cs" />
+    <Compile Include="Motel.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
