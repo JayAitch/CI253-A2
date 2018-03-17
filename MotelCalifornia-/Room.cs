@@ -12,6 +12,8 @@ namespace MotelCalifornia
         //public enum RoomState { SAFE, DANGER, SMOULDER, FIRE, BURNEDOUT };
 
         //public RoomState CurrentRoomState { get; private set; }
+
+            // temperariliy changed the set accessibility for testing
         public int Temperature { get; set; }
         public int RoomNumber { get; private set; }
         public Boolean CanHeatUp { get; set; }
