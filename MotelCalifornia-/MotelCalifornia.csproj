@@ -45,6 +45,7 @@
     <Compile Include="Command.cs" />
     <Compile Include="CommandWords.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="FireEngine.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="InputHandler.cs" />
     <Compile Include="Motel.cs" />

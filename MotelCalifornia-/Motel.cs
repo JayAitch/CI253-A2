@@ -32,21 +32,16 @@ namespace MotelCalifornia
         {
             for(int currentRoom = 0; currentRoom < roomList.Count; currentRoom++)
             {
-                if (roomList[currentRoom].CanHeatUp)
-                {                    
+                                   
                     if (CheckAdjacentRooms(currentRoom))
                     {
                         //allocate to delegate
                         AddToDelegate(roomList[currentRoom]);
                     }
-                }
-                else
-                {
-                       //remove from delegate
-                }
-
-            }
+            }                
         }
+
+
         // checking adjacent rooms temperature if room is hot enough to spread will return true otherwise returns false
         public bool CheckAdjacentRooms(int currentRoom)
         {
@@ -59,8 +54,8 @@ namespace MotelCalifornia
         // adding rooms to delegate room is removed first to prevent duplicates
         public void AddToDelegate(Room room)
         {
-            MotelRoomDelegate -= room.IncrementTemp;
-            MotelRoomDelegate += room.IncrementTemp;            
+            MotelRoomDelegate -= room.IncreaseRoomTemp;
+            MotelRoomDelegate += room.IncreaseRoomTemp;            
         }
 
         // simple testing method to print out room conditions will be deprocated

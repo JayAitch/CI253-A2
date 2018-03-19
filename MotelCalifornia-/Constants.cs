@@ -29,6 +29,8 @@ namespace MotelCalifornia
 
         //fire-truck constants 
         public static readonly int COOLANT_CAPACITY = 600;
+        public static readonly int COOLANT_EMIT_PER_TICK = 40;
+        public static readonly int COOLANT_REDUCE_EFFECT = 1;
 
     }
 }
