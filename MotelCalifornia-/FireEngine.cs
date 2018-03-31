@@ -34,6 +34,23 @@ namespace MotelCalifornia
             CurrentFireEngineStatus = FireEngineStatus.STATIONED; // Initialize the fire engine status as STATIONED
         }
 
+        // refill fire engine coolant if already stationed
+        public void RefillEngine()
+        {
+            if(CurrentFireEngineStatus == FireEngineStatus.STATIONED)
+            {
+                CoolantLevel = Constants.COOLANT_CAPACITY;
+            }
+            else
+            {
+                Console.WriteLine("Fire Engine Not Stationed!");
+            }
+        }
         
+        // station the engine for refueling
+        public void StationEngine()
+        {
+            CurrentFireEngineStatus = FireEngineStatus.STATIONED;
+        }
     }
 }

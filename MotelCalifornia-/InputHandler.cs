@@ -35,14 +35,41 @@ namespace MotelCalifornia
                 Console.WriteLine("Command not recognised"); // Print the following line
                 return false; // Return true
             }
-            if(c.CommandWord == "room")
+            if(c.CommandWord == "room") // if command word == room...
             {
                 if(c.SecondWord == "list")
                 {
                     gameRef.CheckRooms();
                 }
             }
-            return false; // Else return false
+            if (c.CommandWord == "quit") // if command word == quit
+            {
+
+            }
+            if (c.CommandWord == "clear") // if command word == clear
+            {
+
+            }
+            if (c.CommandWord == "engine") // if command word == engine
+            {
+                if (c.SecondWord == "report")
+                {
+                    
+                }
+                if (c.SecondWord == "recall")
+                {
+                    
+                }
+                if (c.SecondWord == "refill")
+                {
+
+                }
+                if (c.SecondWord == "goto")
+                {
+
+                }
+            }
+                return false; // Else return false
         }
 
     }

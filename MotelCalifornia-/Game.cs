@@ -21,10 +21,7 @@ namespace MotelCalifornia
                 if (motel.MotelRoomDelegate != null) // If the room delegate is not null...
                 {
                     // Calls delegate to call methods/room iterator for testing
-                    motel.MotelRoomDelegate(); // Call the following function
-                   // motel.GetRoomTemperatures(); // Call the following function
-                   // Console.WriteLine("--------------------------------   " + tick + "  ---------------------------"); // Print out the following line
-                    tick++; // Increment the test tick
+                    motel.MotelRoomDelegate(); // Call the following function                   
                 }      
         }
         public void CheckRooms()
