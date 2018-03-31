@@ -76,7 +76,7 @@ namespace MotelCalifornia
             {
                 
                 Console.WriteLine("   Room Number: " + roomList[i].RoomNumber + "  Temperature: " + roomList[i].Temperature
-                    + " increment test: " + testIncrementor + " Delegate Length: " + MotelRoomDelegate.GetInvocationList().Count());
+                     + " Delegate Length: " + MotelRoomDelegate.GetInvocationList().Count());
                 
             }
         }
