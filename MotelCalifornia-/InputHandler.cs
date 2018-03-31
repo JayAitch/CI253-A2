@@ -33,7 +33,7 @@ namespace MotelCalifornia
             if (c.IsUnknown) // If the command input by the user is unknown...
             {
                 Console.WriteLine("Command not recognised"); // Print the following line
-                return true; // Return true
+                return false; // Return true
             }
             if(c.CommandWord == "room")
             {
