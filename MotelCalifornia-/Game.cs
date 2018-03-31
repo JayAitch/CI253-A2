@@ -22,8 +22,8 @@ namespace MotelCalifornia
                 {
                     // Calls delegate to call methods/room iterator for testing
                     motel.MotelRoomDelegate(); // Call the following function
-                    motel.GetRoomTemperatures(); // Call the following function
-                    Console.WriteLine("--------------------------------   " + tick + "  ---------------------------"); // Print out the following line
+                   // motel.GetRoomTemperatures(); // Call the following function
+                   // Console.WriteLine("--------------------------------   " + tick + "  ---------------------------"); // Print out the following line
                     tick++; // Increment the test tick
                 }      
         }

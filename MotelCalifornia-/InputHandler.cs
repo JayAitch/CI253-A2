@@ -8,8 +8,13 @@ namespace MotelCalifornia
 {
     class InputHandler
     {
-        
+        private Game gameRef;
         private Parser parser = new Parser(); // Initializes the parser
+        public InputHandler(Game g)
+        {
+            gameRef = g;
+        }
+            
         // Get input from command line and parse into a command
         public void GetInput()
         {
@@ -29,6 +34,13 @@ namespace MotelCalifornia
             {
                 Console.WriteLine("Command not recognised"); // Print the following line
                 return true; // Return true
+            }
+            if(c.CommandWord == "room")
+            {
+                if(c.SecondWord == "list")
+                {
+                    gameRef.CheckRooms();
+                }
             }
             return false; // Else return false
         }
