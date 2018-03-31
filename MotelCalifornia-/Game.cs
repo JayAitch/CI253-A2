@@ -8,24 +8,28 @@ namespace MotelCalifornia
 {
     class Game
     {
-        public int RefreshRate = Constants.FAST_GAME_SPEED;
-        Motel motel = new Motel();
-        int tick = 0;
+        public int RefreshRate = Constants.FAST_GAME_SPEED; // Sets the game speed to FAST
+        Motel motel = new Motel(); // Intializes the motel
+        int tick = 0; // Test tick is set to 0
 
 
-        //  method called per tick as assigned by enum
+        // Method called per tick as assigned by enum
         public void TickTock(Object data)
         {
-            // called to resolve and allocate to room delegate
+                // Called to resolve and allocate to room delegate
                 motel.DelegateOperrations();
-                if (motel.MotelRoomDelegate != null)
+                if (motel.MotelRoomDelegate != null) // If the room delegate is not null...
                 {
-                // calling delegate to call methods and call room iterator for testing
-                    motel.MotelRoomDelegate();
-                    motel.GetRoomTemperatures();
-                     Console.WriteLine("--------------------------------   " + tick + "  ---------------------------");
-                    tick++;
+                    // Calls delegate to call methods/room iterator for testing
+                    motel.MotelRoomDelegate(); // Call the following function
+                    motel.GetRoomTemperatures(); // Call the following function
+                    Console.WriteLine("--------------------------------   " + tick + "  ---------------------------"); // Print out the following line
+                    tick++; // Increment the test tick
                 }      
+        }
+        public void CheckRooms()
+        {
+            motel.GetRoomTemperatures();
         }
     }
 }

@@ -9,56 +9,67 @@ namespace MotelCalifornia
 {
     class Motel
     {
-        public List<Room> roomList;
-        public delegate void RoomThemostatDelegate();
-        public RoomThemostatDelegate MotelRoomDelegate { get; set; }
+        public List<Room> roomList; // Array of rooms
+        public delegate void RoomThemostatDelegate(); // Delegate for the room temperature
+        public RoomThemostatDelegate MotelRoomDelegate { get; set; } // Variable for getting and setting the room delegate
 
-        // this value is only for testing
-        int testIncrementor;
-        //  Constructor to generate rooms
+        // Constructor to generate rooms
         public Motel()
         {           
-            roomList = new List<Room>();
-            for ( int i = 0; i < Constants.MAX_NBR_ROOMS; i++)
+            roomList = new List<Room>(); // Intializes the room array
+            for ( int i = 0; i < Constants.MAX_NBR_ROOMS; i++) // For each room in the array...
             {
-                Room room = new Room(i+1);
-                roomList.Add(room);
+                Room room = new Room(i); // Intialize the room.
+                roomList.Add(room); // Add the room to the array
             }
-            roomList[5].Temperature = 180;
+            InitFireStart();
+           // roomList[5].Temperature = 180; // Set a designated room at a set temperature
         }
 
-        // deciding whether to assign or remove rooms from delegate
+        // using public method on rooms to start a fire in a random room
+        private void InitFireStart()
+        {
+            Random random = new Random();
+            int fireStart = 15;// random.Next(0 , Constants.MAX_NBR_ROOMS - 1);
+            roomList[fireStart].StartAsDanger();
+            AddToDelegate(roomList[fireStart]);
+        }
+
+        // Decides whether to assign or remove rooms from delegate
         public void DelegateOperrations()
         {
-            for(int currentRoom = 0; currentRoom < roomList.Count; currentRoom++)
+            for(int currentRoom = 0; currentRoom < roomList.Count; currentRoom++) // For each room in the array...
             {
                                    
-                    if (CheckAdjacentRooms(currentRoom))
+                    if (CheckAdjacentRooms(currentRoom)) // Calls the following method
                     {
-                        //allocate to delegate
-                        AddToDelegate(roomList[currentRoom]);
+                        // Allocate to delegate
+                        AddToDelegate(roomList[currentRoom]); // Adds the current room to the delegate
                     }
             }                
         }
 
 
-        // checking adjacent rooms temperature if room is hot enough to spread will return true otherwise returns false
+        // Checks adjacent rooms' temperature if room is hot enough to spread. If it is, return true. Otherwise, return false
         public bool CheckAdjacentRooms(int currentRoom)
         {
-            int previouseRoom = currentRoom - 1;
-            int nextRoom = currentRoom + 1;
-            return ((previouseRoom > 0 && roomList[previouseRoom].Temperature >= Constants.TEMPERATURE_THRESHOLD)
-                         || (nextRoom < 15 && roomList[nextRoom].Temperature >= Constants.TEMPERATURE_THRESHOLD));
+            int previouseRoom = currentRoom - 1; // selects the previous room in the array
+            int nextRoom = currentRoom + 1; // selects the next room in the array
+
+            // Checks if the temperature of the previous/next room exceeds the temperature threshold
+            return ((previouseRoom >= 0 && roomList[previouseRoom].Temperature >= Constants.TEMPERATURE_THRESHOLD)
+                         || (nextRoom < Constants.MAX_NBR_ROOMS && roomList[nextRoom].Temperature >= Constants.TEMPERATURE_THRESHOLD)); 
       
         }
-        // adding rooms to delegate room is removed first to prevent duplicates
+
+        // Adding rooms to delegate room is removed first to prevent duplicates
         public void AddToDelegate(Room room)
         {
             MotelRoomDelegate -= room.IncreaseRoomTemp;
             MotelRoomDelegate += room.IncreaseRoomTemp;            
         }
 
-        // simple testing method to print out room conditions will be deprocated
+        // TESTING METHOD. Used to print out room conditions. Will be deprocated
         public void GetRoomTemperatures()
         {
             for(int i = 0; i < roomList.Count; i++)
@@ -68,7 +79,6 @@ namespace MotelCalifornia
                     + " increment test: " + testIncrementor + " Delegate Length: " + MotelRoomDelegate.GetInvocationList().Count());
                 
             }
-            testIncrementor++;
         }
     }
 }

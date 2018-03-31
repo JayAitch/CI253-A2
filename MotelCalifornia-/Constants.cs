@@ -8,29 +8,29 @@ namespace MotelCalifornia
 {
     class Constants
     {
-        //config settings 
-        public static readonly int MAX_NBR_ROOMS = 16;
-        public static readonly int TEMPERATURE_THRESHOLD = 150;
-        public static readonly int TEMPERATURE_INCREMENT = 20;
+        // Config Settings
+        public static readonly int MAX_NBR_ROOMS = 16; // Maximum number of rooms in the motel
+        public static readonly int TEMPERATURE_THRESHOLD = 150; // Temperature threshold before room begins heating up
+        public static readonly int TEMPERATURE_INCREMENT = 20; // Temperature increment per tick
 
 
 
-        //temperature assignments of room states
-        public static readonly int ROOM_STATE_SAFE = 0;
-        public static readonly int ROOM_STATE_DANGER = 150;
-        public static readonly int ROOM_STATE_SMOULDER = 300;
-        public static readonly int ROOM_STATE_FIRE = 600;
-        public static readonly int ROOM_STATE_BURNEDOUT = 700;
+        // Room State Temperatures
+        public static readonly int ROOM_STATE_SAFE = 0; // Safe state of room = 0 degrees
+        public static readonly int ROOM_STATE_DANGER = 150; // Danger state of room =  150 degrees. Anything above this value sets the room to start heating up
+        public static readonly int ROOM_STATE_SMOULDER = 300; // Smoulder state of room = 300 degrees
+        public static readonly int ROOM_STATE_FIRE = 600; // Fire state of room = 600 degrees. By this point, the room is set on fire
+        public static readonly int ROOM_STATE_BURNEDOUT = 700; // Burnedout state of room = 700 degrees. By this point, the room cannot be salvaged by coolant
 
 
-        //game speeds
-        public static readonly int SLOW_GAME_SPEED = 10000;
-        public static readonly int FAST_GAME_SPEED = 2000;
+        // Game Speeds. Currently only two settings, but more can be added
+        public static readonly int SLOW_GAME_SPEED = 10000; // Slow game speed is set to 10 seconds per tick
+        public static readonly int FAST_GAME_SPEED = 600; // Fast game speed is set to 2 seconds per tick
 
-        //fire-truck constants 
-        public static readonly int COOLANT_CAPACITY = 600;
-        public static readonly int COOLANT_EMIT_PER_TICK = 40;
-        public static readonly int COOLANT_REDUCE_EFFECT = 1;
+        // Constants for Fire Engine
+        public static readonly int COOLANT_CAPACITY = 600; // Fire engine max coolant capacity is set to 600
+        public static readonly int COOLANT_EMIT_PER_TICK = 40; // Every tick, 40 coolant is subtracted from the current capacity
+        public static readonly int COOLANT_REDUCE_EFFECT = 1; // Used to reduce temperature of rooms
 
     }
 }
