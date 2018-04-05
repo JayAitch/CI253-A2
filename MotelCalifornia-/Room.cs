@@ -37,7 +37,7 @@ namespace MotelCalifornia
         {
             if (CanHeatUp) // If the room can heat up...
             {
-                if (Temperature >= Constants.ROOM_STATE_BURNEDOUT)  // If the room is in 'BURNEDOUT' state...
+                if (Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT)  // If the room is in 'BURNEDOUT' state...
                 {
                     // Do nothing
                 }
@@ -55,7 +55,7 @@ namespace MotelCalifornia
         // FOR JORDAN: Amounted stated
         public void DecreaseRoomTemp()
         {
-            if(Temperature <= Constants.ROOM_STATE_SAFE)
+            if(Temperature < (int)Constants.ROOM_STATES.DANGER)
             {
                 CanHeatUp = false;
             }

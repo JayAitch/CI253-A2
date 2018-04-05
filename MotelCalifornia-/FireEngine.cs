@@ -52,5 +52,10 @@ namespace MotelCalifornia
         {
             CurrentFireEngineStatus = FireEngineStatus.STATIONED;
         }
+
+        public void UseCoolant()
+        {
+            CoolantLevel -= Constants.COOLANT_EMIT_PER_TICK;
+        }
     }
 }
