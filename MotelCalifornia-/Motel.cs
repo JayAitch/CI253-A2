@@ -70,15 +70,54 @@ namespace MotelCalifornia
         }
 
         // TESTING METHOD. Used to print out room conditions. Will be deprocated
-        public void GetRoomTemperatures()
+        public void ListRoomTemperatures()
         {
-            for(int i = 0; i < roomList.Count; i++)
+            for (int i = 0; i < roomList.Count; i++)
             {
                 
                 Console.WriteLine("   Room Number: " + roomList[i].RoomNumber + "  Temperature: " + roomList[i].Temperature
                      + " Delegate Length: " + MotelRoomDelegate.GetInvocationList().Count());
                 
             }
+        }
+
+        public void CalculateStates()
+        {
+            int safeCount = 0;
+            int dangerCount = 0;
+            int smoulderCount = 0;
+            int fireCount = 0;
+            int burnedoutCount = 0;
+            for (int i = 0; i < roomList.Count; i++)
+            {
+                if (roomList[i].Temperature < (int)Constants.ROOM_STATES.DANGER)
+                {
+                    safeCount++;
+                }
+                if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.DANGER && roomList[i].Temperature < (int)Constants.ROOM_STATES.SMOULDER)
+                {
+                    dangerCount++;
+                }
+                if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.SMOULDER && roomList[i].Temperature < (int)Constants.ROOM_STATES.FIRE)
+                {
+                    smoulderCount++;
+                }
+                if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.FIRE && roomList[i].Temperature < (int)Constants.ROOM_STATES.BURNEDOUT)
+                {
+                    fireCount++;
+                }
+                if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT)
+                {
+                    burnedoutCount++;
+                }
+               
+            }
+            Console.WriteLine("   State       |       Count   ");
+            Console.WriteLine("   Safe        |       {0}   ", safeCount);
+            Console.WriteLine("   Danger      |       {0}   ", dangerCount);
+            Console.WriteLine("   Smoulder    |       {0}   ", smoulderCount);
+            Console.WriteLine("   Fire        |       {0}   ", fireCount);
+            Console.WriteLine("   Burnedout   |       {0}   ", burnedoutCount);
         }
     }
 }

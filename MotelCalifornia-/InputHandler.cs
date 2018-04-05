@@ -8,11 +8,11 @@ namespace MotelCalifornia
 {
     class InputHandler
     {
-        private Game gameRef;
+        private Game g;
         private Parser parser = new Parser(); // Initializes the parser
         public InputHandler(Game g)
         {
-            gameRef = g;
+            this.g = g;
         }
             
         // Get input from command line and parse into a command
@@ -26,20 +26,33 @@ namespace MotelCalifornia
                 finished = ProcessCommand(command); // Calls the following method using the user's input
             }
         }
+        private void PrintNoCommandText()
+        {
+            Console.WriteLine("Command not recognised");
+        }
+
 
         // Checks command input of first word
         private Boolean ProcessCommand(Command c)
         {
             if (c.IsUnknown) // If the command input by the user is unknown...
             {
-                Console.WriteLine("Command not recognised"); // Print the following line
+                PrintNoCommandText(); // Print the following line
                 return false; // Return true
             }
             if(c.CommandWord == "room") // if command word == room...
             {
                 if(c.SecondWord == "list")
                 {
-                    gameRef.CheckRooms();
+                    g.CheckRooms();
+                }
+                else if(c.SecondWord == "report")
+                {
+                    g.ReportRooms();
+                }
+                else
+                {
+                    PrintNoCommandText();
                 }
             }
             if (c.CommandWord == "quit") // if command word == quit
@@ -67,6 +80,10 @@ namespace MotelCalifornia
                 if (c.SecondWord == "goto")
                 {
 
+                }
+                else
+                {
+                    PrintNoCommandText();
                 }
             }
                 return false; // Else return false

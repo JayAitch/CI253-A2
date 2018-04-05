@@ -21,7 +21,7 @@ namespace MotelCalifornia
         public static readonly int ROOM_STATE_SMOULDER = 300; // Smoulder state of room = 300 degrees
         public static readonly int ROOM_STATE_FIRE = 600; // Fire state of room = 600 degrees. By this point, the room is set on fire
         public static readonly int ROOM_STATE_BURNEDOUT = 700; // Burnedout state of room = 700 degrees. By this point, the room cannot be salvaged by coolant
-
+        public enum ROOM_STATES { SAFE = 0, DANGER = 150, SMOULDER = 300, FIRE = 600, BURNEDOUT = 700 };
 
         // Game Speeds. Currently only two settings, but more can be added
         public static readonly int SLOW_GAME_SPEED = 10000; // Slow game speed is set to 10 seconds per tick

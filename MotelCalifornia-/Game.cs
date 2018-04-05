@@ -26,7 +26,11 @@ namespace MotelCalifornia
         }
         public void CheckRooms()
         {
-            motel.GetRoomTemperatures();
+            motel.ListRoomTemperatures();
+        }
+        public void ReportRooms()
+        {
+            motel.CalculateStates();
         }
     }
 }
