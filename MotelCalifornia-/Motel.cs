@@ -109,9 +109,13 @@ namespace MotelCalifornia
                 if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT)
                 {
                     burnedoutCount++;
-                }
-               
+                }               
             }
+            PrintState(safeCount, dangerCount, smoulderCount, fireCount, burnedoutCount);
+        }
+
+        private void PrintState(int safeCount, int dangerCount, int smoulderCount, int fireCount, int burnedoutCount)
+        {
             Console.WriteLine("   State       |       Count   ");
             Console.WriteLine("   Safe        |       {0}   ", safeCount);
             Console.WriteLine("   Danger      |       {0}   ", dangerCount);
@@ -119,5 +123,7 @@ namespace MotelCalifornia
             Console.WriteLine("   Fire        |       {0}   ", fireCount);
             Console.WriteLine("   Burnedout   |       {0}   ", burnedoutCount);
         }
+
+
     }
 }

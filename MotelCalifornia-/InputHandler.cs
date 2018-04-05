@@ -57,11 +57,12 @@ namespace MotelCalifornia
             }
             if (c.CommandWord == "quit") // if command word == quit
             {
-
+                g.QuitGame();
+                return true;
             }
             if (c.CommandWord == "clear") // if command word == clear
             {
-
+                Console.Clear();
             }
             if (c.CommandWord == "engine") // if command word == engine
             {
