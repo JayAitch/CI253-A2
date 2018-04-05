@@ -30,7 +30,7 @@ namespace MotelCalifornia
         private void InitFireStart()
         {
             Random random = new Random();
-            int fireStart = 15;// random.Next(0 , Constants.MAX_NBR_ROOMS - 1);
+            int fireStart = random.Next(0 , Constants.MAX_NBR_ROOMS - 1);
             roomList[fireStart].StartAsDanger();
             AddToDelegate(roomList[fireStart]);
         }
@@ -69,7 +69,7 @@ namespace MotelCalifornia
             MotelRoomDelegate += room.IncreaseRoomTemp;            
         }
 
-        // TESTING METHOD. Used to print out room conditions. Will be deprocated
+        // Lists rooms used in room list remove delegate length section post testing
         public void ListRoomTemperatures()
         {
             for (int i = 0; i < roomList.Count; i++)
@@ -81,8 +81,11 @@ namespace MotelCalifornia
             }
         }
 
+
+        // potentially move some of this logic this is checking the rooms against the enum constants and makes a call to print the results
         public void CalculateStates()
         {
+            // values to increment 
             int safeCount = 0;
             int dangerCount = 0;
             int smoulderCount = 0;
@@ -114,6 +117,7 @@ namespace MotelCalifornia
             PrintState(safeCount, dangerCount, smoulderCount, fireCount, burnedoutCount);
         }
 
+        // prints state count results
         private void PrintState(int safeCount, int dangerCount, int smoulderCount, int fireCount, int burnedoutCount)
         {
             Console.WriteLine("   State       |       Count   ");

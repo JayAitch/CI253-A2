@@ -50,19 +50,24 @@ namespace MotelCalifornia
            // Console.WriteLine("Increment called for room " + RoomNumber + " current temperature " + Temperature);
         }
 
-        //currently unusused thoughts on how to fire engine will reduce temp
-        // do we want each coolant to reduce by the amount stated in the brief or just the result per tick
-        // FOR JORDAN: Amounted stated
-        public void DecreaseRoomTemp()
+      // Reduces temperature per coolant used
+        public void DecreaseRoomTemp(int coolantUsed)
         {
-            if(Temperature < (int)Constants.ROOM_STATES.DANGER)
+            // if room state leaves danger threshold set canheatup to false
+            if (Temperature < (int)Constants.ROOM_STATES.DANGER)
             {
                 CanHeatUp = false;
             }
             else
             {
-                // used this instead of just coolant per tick to make changes easier
-                Temperature -= Constants.COOLANT_EMIT_PER_TICK * Constants.COOLANT_REDUCE_EFFECT;
+
+                //generalised method so that less coolant can be emitted then the max per tick
+                Temperature -= coolantUsed * Constants.COOLANT_REDUCE_EFFECT;
+                if (Temperature < (int)Constants.ROOM_STATES.DANGER)
+                {
+                    Console.WriteLine("Room was Quenched");
+                    CanHeatUp = false;
+                }
             }
         }
     }

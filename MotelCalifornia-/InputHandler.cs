@@ -18,12 +18,12 @@ namespace MotelCalifornia
         // Get input from command line and parse into a command
         public void GetInput()
         {
-            Boolean finished = false; // Game state 'finished' is intially set to false
-            while (!finished) // While the game is still playing...
+            Boolean isGameFinished = false; // 
+            while (!isGameFinished) // If parser is still waiting for command
             {
                 Console.Write("Command:  "); // Print the following line
                 Command command = parser.GetCommand(); // Waits to receive input from user
-                finished = ProcessCommand(command); // Calls the following method using the user's input
+                isGameFinished = ProcessCommand(command); // Calls the following method using the user's input
             }
         }
         private void PrintNoCommandText()
@@ -38,7 +38,7 @@ namespace MotelCalifornia
             if (c.IsUnknown) // If the command input by the user is unknown...
             {
                 PrintNoCommandText(); // Print the following line
-                return false; // Return true
+                return false; // continue waiting for command
             }
             if(c.CommandWord == "room") // if command word == room...
             {
@@ -64,6 +64,7 @@ namespace MotelCalifornia
             {
                 Console.Clear();
             }
+
             if (c.CommandWord == "engine") // if command word == engine
             {
                 if (c.SecondWord == "report")
@@ -72,20 +73,27 @@ namespace MotelCalifornia
                 }
                 if (c.SecondWord == "recall")
                 {
-                    
+                    g.SendEngineToStation();
                 }
                 if (c.SecondWord == "refill")
                 {
-
+                    g.RefillEngine();
                 }
                 if (c.SecondWord == "goto")
                 {
-
+                    // try to parse entered string 
+                    int roomToGo;
+                    if(Int32.TryParse(c.ThirdWord, out roomToGo))
+                    {
+                        if(roomToGo > 0 && roomToGo < Constants.MAX_NBR_ROOMS) //if room numer possible
+                        {
+                            g.SendEngineToRoom(roomToGo - 1); //dispatch command
+                        }
+                        
+                    }
+                    
                 }
-                else
-                {
-                    PrintNoCommandText();
-                }
+                
             }
                 return false; // Else return false
         }

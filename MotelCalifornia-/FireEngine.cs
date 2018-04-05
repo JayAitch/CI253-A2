@@ -22,9 +22,7 @@ namespace MotelCalifornia
 
         // Used to target a specified room to cool down
         public Room RoomToCoolDown { get; set; }
-        // do we want to add a room reference to simplifiy cooling target or pass the room around 
-
-        // FOR JORDAN: ADD A ROOM REFERENCE
+        
 
         // Constructor for fire engine
         public FireEngine(int engineID)
@@ -51,11 +49,46 @@ namespace MotelCalifornia
         public void StationEngine()
         {
             CurrentFireEngineStatus = FireEngineStatus.STATIONED;
+            Console.WriteLine("Stationed Engine");
         }
 
+        // assign room and fire engine state via room identified in command
+        public void SendEngineToRoom(Room coolingRoom)
+        {
+            RoomToCoolDown = coolingRoom;
+            CurrentFireEngineStatus = FireEngineStatus.ONCALL;
+            Console.WriteLine("Sending The boys out to" + RoomToCoolDown.RoomNumber);
+        }
+
+        // cooldown room if on call
         public void UseCoolant()
         {
-            CoolantLevel -= Constants.COOLANT_EMIT_PER_TICK;
+            // if room canheatup bool is true
+            if (RoomToCoolDown.CanHeatUp)
+            {             
+                if ((CoolantLevel - Constants.COOLANT_EMIT_PER_TICK) >= 0) //if current coolant is more than the coolant per tick
+                {
+                    CoolantLevel -= Constants.COOLANT_EMIT_PER_TICK; //reduce by coolant & temp per tick
+                    RoomToCoolDown.DecreaseRoomTemp(Constants.COOLANT_EMIT_PER_TICK);
+
+                }
+                else if (CoolantLevel > 0) // if coolant level is not empty
+                {
+                    CoolantLevel -= CoolantLevel; // reduce coolant and temp by remaining coolant
+                    RoomToCoolDown.DecreaseRoomTemp(CoolantLevel);
+                }
+                else
+                {
+                    CurrentFireEngineStatus = FireEngineStatus.FREE; // engine has no water set status to FREE breaks out of loop
+                    Console.WriteLine("engine out of water");
+                }
+
+                Console.WriteLine("Room number: " + RoomToCoolDown.RoomNumber); // print water effects
+                Console.WriteLine("Coolant:  " + CoolantLevel);
+                Console.WriteLine("Temp:  " + RoomToCoolDown.Temperature);
+
+            }                
+                        
         }
     }
 }
