@@ -10,6 +10,7 @@ namespace MotelCalifornia
     {
         private Game g;
         private Parser parser = new Parser(); // Initializes the parser
+        public Boolean isGameFinished = false;
         public InputHandler(Game g)
         {
             this.g = g;
@@ -18,14 +19,22 @@ namespace MotelCalifornia
         // Get input from command line and parse into a command
         public void GetInput()
         {
-            Boolean isGameFinished = false; // 
+            
+
             while (!isGameFinished) // If parser is still waiting for command
             {
                 Console.Write("Command:  "); // Print the following line
                 Command command = parser.GetCommand(); // Waits to receive input from user
                 isGameFinished = ProcessCommand(command); // Calls the following method using the user's input
             }
+
+            if (isGameFinished)
+            {
+                Console.WriteLine("Press enter to quit.");
+                Console.ReadKey();
+            }
         }
+
         private void PrintNoCommandText()
         {
             Console.WriteLine("Command not recognised");
@@ -52,34 +61,34 @@ namespace MotelCalifornia
                 }
                 else
                 {
-                    PrintNoCommandText();
+                    Console.WriteLine("room command not recognised: please use list or report");
                 }
             }
-            if (c.CommandWord == "quit") // if command word == quit
+            else if (c.CommandWord == "quit") // if command word == quit
             {
                 g.QuitGame();
                 return true;
             }
-            if (c.CommandWord == "clear") // if command word == clear
+            else if (c.CommandWord == "clear") // if command word == clear
             {
                 Console.Clear();
             }
 
-            if (c.CommandWord == "engine") // if command word == engine
+            else if (c.CommandWord == "engine") // if command word == engine
             {
                 if (c.SecondWord == "report")
                 {
-                    
+                    g.GetEngineReport();
                 }
-                if (c.SecondWord == "recall")
+                else if (c.SecondWord == "recall")
                 {
                     g.SendEngineToStation();
                 }
-                if (c.SecondWord == "refill")
+                else if (c.SecondWord == "refill")
                 {
                     g.RefillEngine();
                 }
-                if (c.SecondWord == "goto")
+                else if (c.SecondWord == "goto")
                 {
                     // try to parse entered string 
                     int roomToGo;
@@ -89,9 +98,20 @@ namespace MotelCalifornia
                         {
                             g.SendEngineToRoom(roomToGo - 1); //dispatch command
                         }
-                        
+                        else
+                        {
+                            Console.WriteLine("please enter a room number between 1 and {0}", Constants.MAX_NBR_ROOMS);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Room number needs to be a integer");
                     }
                     
+                }
+                else
+                {
+                    Console.WriteLine("Engine command not recognised: please use goto, refill, recall or report");
                 }
                 
             }

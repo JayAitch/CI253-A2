@@ -24,7 +24,7 @@ namespace MotelCalifornia
         public enum ROOM_STATES { SAFE = 0, DANGER = 150, SMOULDER = 300, FIRE = 600, BURNEDOUT = 700 };
 
         // Game Speeds. Currently only two settings, but more can be added
-        public static readonly int SLOW_GAME_SPEED = 10000; // Slow game speed is set to 10 seconds per tick
+        public static readonly int SLOW_GAME_SPEED = 3000000; // Slow game speed is set to 10 seconds per tick
         public static readonly int FAST_GAME_SPEED = 600; // Fast game speed is set to 2 seconds per tick
 
         // Constants for Fire Engine

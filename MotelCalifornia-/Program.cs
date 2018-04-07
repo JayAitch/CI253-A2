@@ -17,8 +17,16 @@ namespace MotelCalifornia
             Timer tmr = new Timer(timerCallBack, null, 1000, g.RefreshRate); // Intialize the timer (uses callback and game speed)
 
             InputHandler inputHandler = new InputHandler(g); // Initialize the input handler
-            inputHandler.GetInput(); // Call the following method for user input
+            
+            if (g.IsPlaying)
+            {
+                inputHandler.GetInput(); // Call the following method for user input
+            }
+            else
+            {
+                inputHandler.isGameFinished = true;
 
+            }
         }
     }
 }

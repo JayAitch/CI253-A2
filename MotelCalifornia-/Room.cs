@@ -40,6 +40,7 @@ namespace MotelCalifornia
                 if (Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT)  // If the room is in 'BURNEDOUT' state...
                 {
                     // Do nothing
+                    CanHeatUp = false;
                 }
                 else // Else...
                 {

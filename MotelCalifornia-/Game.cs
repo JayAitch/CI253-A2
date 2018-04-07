@@ -8,7 +8,7 @@ namespace MotelCalifornia
 {
     class Game
     {
-        private bool IsPlaying { get; set; }
+        public bool IsPlaying { get; private set; }
         public int RefreshRate = Constants.FAST_GAME_SPEED; // Sets the game speed to FAST
         Motel motel = new Motel(); // Intializes the motel
         FireEngine fireEngine = new FireEngine(1);
@@ -26,21 +26,27 @@ namespace MotelCalifornia
 
             if (IsPlaying)
             {
-               // tick fire engine coolant if it i cooling a room (ONCALL)
-                if(fireEngine.CurrentFireEngineStatus == FireEngine.FireEngineStatus.ONCALL)
-                {
-                    fireEngine.UseCoolant();
-                }
-                    
-                motel.DelegateOperrations(); // Called to resolve and allocate to room delegate
-                if (motel.MotelRoomDelegate != null) // If the room delegate is not null...
-                {
-                    
-                    motel.MotelRoomDelegate(); // Call the following function                   
-                }
+                
+                    // tick fire engine coolant if it i cooling a room (ONCALL)
+                    if (fireEngine.CurrentFireEngineStatus == FireEngine.FireEngineStatus.ONCALL)
+                    {
+                        fireEngine.UseCoolant();
+                    }
+
+                    motel.DelegateOperrations(); // Called to resolve and allocate to room delegate
+                    if (motel.MotelRoomDelegate != null) // If the room delegate is not null...
+                    {
+
+                        motel.MotelRoomDelegate(); // Call the following function                   
+                    }
+                              
             }
         }
 
+        public bool CheckGameEnd()
+        {
+            return  motel.CheckGameEnd();
+        }
 
         // This section dispatches command messages
         // command room list
@@ -72,6 +78,10 @@ namespace MotelCalifornia
         public void RefillEngine()
         {
             fireEngine.RefillEngine();
+        }
+        public void GetEngineReport()
+        {
+            fireEngine.EngineReport();
         }
     }
 }

@@ -35,6 +35,19 @@ namespace MotelCalifornia
             AddToDelegate(roomList[fireStart]);
         }
 
+        public bool CheckGameEnd()
+        {
+            bool isGameEndBool = true;
+            for (int i = 0; i < roomList.Count; i++)
+            {
+                if(roomList[i].CanHeatUp == true)
+                {
+                    isGameEndBool = false;
+                }
+            }
+            return isGameEndBool;
+        }
+
         // Decides whether to assign or remove rooms from delegate
         public void DelegateOperrations()
         {

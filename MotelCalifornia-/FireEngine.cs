@@ -57,7 +57,7 @@ namespace MotelCalifornia
         {
             RoomToCoolDown = coolingRoom;
             CurrentFireEngineStatus = FireEngineStatus.ONCALL;
-            Console.WriteLine("Sending The boys out to" + RoomToCoolDown.RoomNumber);
+            Console.WriteLine("Sending The boys out to room " + RoomToCoolDown.RoomNumber);
         }
 
         // cooldown room if on call
@@ -83,12 +83,22 @@ namespace MotelCalifornia
                     Console.WriteLine("engine out of water");
                 }
 
-                Console.WriteLine("Room number: " + RoomToCoolDown.RoomNumber); // print water effects
-                Console.WriteLine("Coolant:  " + CoolantLevel);
-                Console.WriteLine("Temp:  " + RoomToCoolDown.Temperature);
-
             }                
                         
+        }
+
+        public void EngineReport()
+        {
+            Console.WriteLine("Fire Engine report.");
+            Console.WriteLine("EngineID:   {0}", EngineID);
+            Console.WriteLine("Engine Status:   {0}", CurrentFireEngineStatus);
+            Console.WriteLine("Coolant:   {0}", CoolantLevel);
+            if(CurrentFireEngineStatus == FireEngineStatus.ONCALL)
+            {
+                Console.WriteLine("Room Cooling:    {0}", RoomToCoolDown.RoomNumber);
+                Console.WriteLine("Temperature of room:    {0}", RoomToCoolDown.Temperature);
+            }
+
         }
     }
 }
