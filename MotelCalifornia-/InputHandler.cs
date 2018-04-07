@@ -105,7 +105,7 @@ namespace MotelCalifornia
                     int roomToGo;
                     if(Int32.TryParse(c.ThirdWord, out roomToGo))
                     {
-                        if(roomToGo > 0 && roomToGo < Constants.MAX_NBR_ROOMS) //if room numer possible
+                        if(roomToGo > 0 && roomToGo <= Constants.MAX_NBR_ROOMS) //if room numer possible
                         {
                             g.SendEngineToRoom(roomToGo - 1); //dispatch command
                         }

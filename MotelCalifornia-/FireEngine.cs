@@ -86,9 +86,11 @@ namespace MotelCalifornia
             }                
                         
         }
-
+        // method for engine report
         public void EngineReport()
         {
+            string QuenchedOrBurndeout; // string to disply status of rooms to show if they can heatup
+            Console.WriteLine("");
             Console.WriteLine("Fire Engine report.");
             Console.WriteLine("EngineID:   {0}", EngineID);
             Console.WriteLine("Engine Status:   {0}", CurrentFireEngineStatus);
@@ -97,6 +99,23 @@ namespace MotelCalifornia
             {
                 Console.WriteLine("Room Cooling:    {0}", RoomToCoolDown.RoomNumber);
                 Console.WriteLine("Temperature of room:    {0}", RoomToCoolDown.Temperature);
+                
+                if(!RoomToCoolDown.CanHeatUp)
+                {
+                    if(RoomToCoolDown.Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT)
+                    {
+                        QuenchedOrBurndeout = "Room is Burnedout";
+                    }
+                    else
+                    {
+                        QuenchedOrBurndeout = "Room is Quenched";
+                    }
+                }
+                else
+                {
+                    QuenchedOrBurndeout = "Room can heat up!";
+                }
+                Console.WriteLine(QuenchedOrBurndeout);
             }
 
         }

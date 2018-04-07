@@ -57,6 +57,7 @@ namespace MotelCalifornia
             // if room state leaves danger threshold set canheatup to false
             if (Temperature < (int)Constants.ROOM_STATES.DANGER)
             {
+                Console.WriteLine("Room was Quenched");
                 CanHeatUp = false;
             }
             else

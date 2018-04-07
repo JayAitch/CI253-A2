@@ -39,11 +39,15 @@ namespace MotelCalifornia
         public bool CheckGameEnd()
         {
             bool isGameEndBool = true;
-            for (int i = 0; i < roomList.Count; i++)
+            for (int i = 0; i < roomList.Count(); i++)
             {
-                if(roomList[i].CanHeatUp == true)
+                if(roomList[i].CanHeatUp == true && MotelRoomDelegate != null)
                 {
                     isGameEndBool = false;
+                }
+                else
+                {
+                    isGameEndBool = true;
                 }
             }
             return isGameEndBool;
@@ -54,18 +58,23 @@ namespace MotelCalifornia
         {
             for(int currentRoom = 0; currentRoom < roomList.Count; currentRoom++) // For each room in the array...
             {
-                                   
-                    if (CheckAdjacentRooms(currentRoom)) // Calls the following method
-                    {
-                        // Allocate to delegate
-                        AddToDelegate(roomList[currentRoom]); // Adds the current room to the delegate
-                    }
+
+                if (CheckAdjacentRooms(currentRoom)) // Calls the following method
+                {
+                    // Allocate to delegate
+                    AddToDelegate(roomList[currentRoom]); // Adds the current room to the delegate
+                }
+                if(roomList[currentRoom].CanHeatUp == false)
+                {
+                    RemoveFromDelegate(roomList[currentRoom]); // remove rooms that have had canheatup switched to empty delgate in order to end the game
+                }
+
             }                
         }
 
 
         // Checks adjacent rooms' temperature if room is hot enough to spread. If it is, return true. Otherwise, return false
-        public bool CheckAdjacentRooms(int currentRoom)
+        private bool CheckAdjacentRooms(int currentRoom)
         {
             int previouseRoom = currentRoom - 1; // selects the previous room in the array
             int nextRoom = currentRoom + 1; // selects the next room in the array
@@ -77,21 +86,50 @@ namespace MotelCalifornia
         }
 
         // Adding rooms to delegate room is removed first to prevent duplicates
-        public void AddToDelegate(Room room)
+        private void AddToDelegate(Room room)
         {
             MotelRoomDelegate -= room.IncreaseRoomTemp;
             MotelRoomDelegate += room.IncreaseRoomTemp;            
         }
 
-        // Lists rooms used in room list remove delegate length section post testing
+        private void RemoveFromDelegate(Room room)
+        {
+            MotelRoomDelegate -= room.IncreaseRoomTemp;
+        }
+
+        // Lists rooms used in room list command
         public void ListRoomTemperatures()
         {
-            for (int i = 0; i < roomList.Count; i++)
+            Console.WriteLine("");
+            for (int i = 0; i < roomList.Count; i++) // iterates through all reooms giving there number and temperature
             {
-                
-                Console.WriteLine("   Room Number: " + roomList[i].RoomNumber + "  Temperature: " + roomList[i].Temperature
-                     + " Delegate Length: " + MotelRoomDelegate.GetInvocationList().Count());
-                
+                string roomState;                
+
+                if (roomList[i].Temperature < (int)Constants.ROOM_STATES.DANGER)
+                {
+                    roomState = "safe";
+                }
+                else if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.DANGER && roomList[i].Temperature < (int)Constants.ROOM_STATES.SMOULDER)
+                {
+                    roomState = "danger";
+                }
+                else if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.SMOULDER && roomList[i].Temperature < (int)Constants.ROOM_STATES.FIRE)
+                {
+                    roomState = "smoulder";
+                }
+                else if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.FIRE && roomList[i].Temperature < (int)Constants.ROOM_STATES.BURNEDOUT)
+                {
+                    roomState = "fire";
+                }
+                else if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT)
+                {
+                    roomState = "burndeout";
+                }
+                else
+                {
+                    roomState = "none";
+                }
+                Console.WriteLine("   Room Number: " + roomList[i].RoomNumber + "  Temperature: " + roomList[i].Temperature + "   State:  " + roomState);
             }
         }
 
@@ -105,7 +143,7 @@ namespace MotelCalifornia
             int smoulderCount = 0;
             int fireCount = 0;
             int burnedoutCount = 0;
-            for (int i = 0; i < roomList.Count; i++)
+            for (int i = 0; i < roomList.Count; i++) // check room states and increment values
             {
                 if (roomList[i].Temperature < (int)Constants.ROOM_STATES.DANGER)
                 {
@@ -134,6 +172,7 @@ namespace MotelCalifornia
         // prints state count results
         private void PrintState(int safeCount, int dangerCount, int smoulderCount, int fireCount, int burnedoutCount)
         {
+            Console.WriteLine("");
             Console.WriteLine("   State       |       Count   ");
             Console.WriteLine("   Safe        |       {0}   ", safeCount);
             Console.WriteLine("   Danger      |       {0}   ", dangerCount);
