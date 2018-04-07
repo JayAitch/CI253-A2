@@ -100,13 +100,13 @@ namespace MotelCalifornia
                 Console.WriteLine("Room Cooling:    {0}", RoomToCoolDown.RoomNumber);
                 Console.WriteLine("Temperature of room:    {0}", RoomToCoolDown.Temperature);
                 
-                if(!RoomToCoolDown.CanHeatUp)
+                if(!RoomToCoolDown.CanHeatUp) // if room cant heat up...
                 {
-                    if(RoomToCoolDown.Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT)
+                    if(RoomToCoolDown.Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT) // state is burnedout
                     {
                         QuenchedOrBurndeout = "Room is Burnedout";
                     }
-                    else
+                    else // state is quenched
                     {
                         QuenchedOrBurndeout = "Room is Quenched";
                     }

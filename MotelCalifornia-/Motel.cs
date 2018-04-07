@@ -105,7 +105,7 @@ namespace MotelCalifornia
             {
                 string roomState;                
 
-                if (roomList[i].Temperature < (int)Constants.ROOM_STATES.DANGER)
+                if (roomList[i].Temperature < (int)Constants.ROOM_STATES.DANGER) // calculate room state
                 {
                     roomState = "safe";
                 }
