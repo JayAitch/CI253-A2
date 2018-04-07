@@ -9,7 +9,7 @@ namespace MotelCalifornia
     class Game
     {
         public bool IsPlaying { get; private set; }
-        public int RefreshRate = Constants.FAST_GAME_SPEED; // Sets the game speed to FAST
+        public int RefreshRate = Constants.SLOW_GAME_SPEED; // Sets the game speed to FAST
         Motel motel = new Motel(); // Intializes the motel
         FireEngine fireEngine = new FireEngine(1);
 
@@ -26,7 +26,7 @@ namespace MotelCalifornia
 
             if (IsPlaying)
             {
-                
+                IsPlaying = !IsCheckGameEnd(); 
                     // tick fire engine coolant if it i cooling a room (ONCALL)
                     if (fireEngine.CurrentFireEngineStatus == FireEngine.FireEngineStatus.ONCALL)
                     {
@@ -43,7 +43,7 @@ namespace MotelCalifornia
             }
         }
 
-        public bool CheckGameEnd()
+        public bool IsCheckGameEnd()
         {
             return  motel.CheckGameEnd();
         }
@@ -62,6 +62,7 @@ namespace MotelCalifornia
         // comand quit
         public void QuitGame()
         {
+            Console.Clear();
             Console.WriteLine("The Game Is Over your final score is:");
             motel.CalculateStates();
         }

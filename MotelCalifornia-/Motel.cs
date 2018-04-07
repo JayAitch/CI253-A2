@@ -35,6 +35,7 @@ namespace MotelCalifornia
             AddToDelegate(roomList[fireStart]);
         }
 
+        // returning a bool based on rooms if any of the rooms are still able to heat up this returns true
         public bool CheckGameEnd()
         {
             bool isGameEndBool = true;

@@ -10,29 +10,40 @@ namespace MotelCalifornia
     {
         private Game g;
         private Parser parser = new Parser(); // Initializes the parser
-        public Boolean isGameFinished = false;
+        public Boolean isGameFinished;
+        // public 
         public InputHandler(Game g)
         {
+            isGameFinished = false;
             this.g = g;
         }
             
         // Get input from command line and parse into a command
         public void GetInput()
         {
-            
-
             while (!isGameFinished) // If parser is still waiting for command
             {
                 Console.Write("Command:  "); // Print the following line
                 Command command = parser.GetCommand(); // Waits to receive input from user
                 isGameFinished = ProcessCommand(command); // Calls the following method using the user's input
+                if (g.IsCheckGameEnd())
+                {
+                    FinishGame();
+                }
             }
 
             if (isGameFinished)
             {
+                g.QuitGame();
                 Console.WriteLine("Press enter to quit.");
                 Console.ReadKey();
             }
+        }
+
+
+        public void FinishGame()
+        {
+            isGameFinished = true;
         }
 
         private void PrintNoCommandText()
