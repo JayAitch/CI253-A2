@@ -49,11 +49,11 @@ namespace MotelCalifornia
             if (g.IsPlaying)
             {
                 
-                TimerCallback timerCallBack = g.TickTock; // Initialize the timer callback
+                TimerCallback timerCallBack = g.GameTickMethod; // Initialize the timer callback
                 Timer tmr = new Timer(timerCallBack, null, 1000, g.RefreshRate); // Intialize the timer (uses callback and game speed)
 
                 InputHandler inputHandler = new InputHandler(g); // Initialize the input handler
-                inputHandler.GetInput(); // Call the following method for user input
+                inputHandler.GetUserInput(); // Call the following method for user input
             }
         }
     }

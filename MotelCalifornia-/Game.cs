@@ -8,8 +8,8 @@ namespace MotelCalifornia
 {
     class Game
     {
-        public bool IsPlaying { get; private set; }
-        public int RefreshRate = Constants.SLOW_GAME_SPEED; // Sets the game speed to FAST
+        public bool IsPlaying { get;  set; }
+        public int RefreshRate = Constants.FAST_GAME_SPEED; // Sets the game speed to FAST
         Motel motel = new Motel(); // Intializes the motel
         FireEngine fireEngine = new FireEngine(1);
 
@@ -21,12 +21,13 @@ namespace MotelCalifornia
         }
 
         // Method called per tick as assigned by enum
-        public void TickTock(Object data)
+        public void GameTickMethod(Object data)
         {
-
+            IsPlaying = !IsCheckGameEnd();
             if (IsPlaying)
             {
-                IsPlaying = !IsCheckGameEnd(); 
+
+               
                     // Tick fire engine coolant if it is cooling a room (ONCALL)
                     if (fireEngine.CurrentFireEngineStatus == FireEngine.FireEngineStatus.ONCALL)
                     {
@@ -42,8 +43,8 @@ namespace MotelCalifornia
                               
             }
         }
-
-        public bool IsCheckGameEnd()
+        // Private method to check for game end everytick using method inside motel
+        private bool IsCheckGameEnd()
         {
             return  motel.CheckGameEnd();
         }
@@ -62,6 +63,7 @@ namespace MotelCalifornia
         // Command quit
         public void QuitGame()
         {
+            IsPlaying = false;
             Console.Clear();
             Console.WriteLine("The Game Is Over! Your final score is:");
             motel.CalculateStates();
