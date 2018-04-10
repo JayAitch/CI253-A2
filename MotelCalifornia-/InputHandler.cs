@@ -35,7 +35,7 @@ namespace MotelCalifornia
             if (isGameFinished)
             {
                 g.QuitGame();
-                Console.WriteLine("Press enter to quit.");
+                Console.WriteLine("\nPress enter to quit.");
                 Console.ReadKey();
             }
         }
@@ -58,60 +58,60 @@ namespace MotelCalifornia
             if (c.IsUnknown) // If the command input by the user is unknown...
             {
                 PrintNoCommandText(); // Print the following line
-                return false; // continue waiting for command
+                return false; // Continue waiting for command
             }
-            if(c.CommandWord == "room") // if command word == room...
+            if(c.CommandWord == "room") // If command word == room...
             {
-                if(c.SecondWord == "list")
+                if(c.SecondWord == "list") // If second command word == list...
                 {
-                    g.CheckRooms();
+                    g.CheckRooms(); // Check room states and display
                 }
-                else if(c.SecondWord == "report")
+                else if(c.SecondWord == "report") // If second command word == report...
                 {
-                    g.ReportRooms();
+                    g.ReportRooms(); // Count the different room states and display
                 }
                 else
                 {
-                    Console.WriteLine("room command not recognised: please use list or report");
+                    Console.WriteLine("\nRoom command not recognised: please use list or report\n");
                 }
             }
-            else if (c.CommandWord == "quit") // if command word == quit
+            else if (c.CommandWord == "quit") // If command word == quit...
             {
-                g.QuitGame();
+                g.QuitGame(); // Quit the game
                 return true;
             }
-            else if (c.CommandWord == "clear") // if command word == clear
+            else if (c.CommandWord == "clear") // If command word == clear...
             {
-                Console.Clear();
+                Console.Clear(); // Clear the screen
             }
 
-            else if (c.CommandWord == "engine") // if command word == engine
+            else if (c.CommandWord == "engine") // If command word == engine...
             {
-                if (c.SecondWord == "report")
+                if (c.SecondWord == "report") // If second command word == report...
                 {
-                    g.GetEngineReport();
+                    g.GetEngineReport(); // Get engine ID, current coolant level and engine status
                 }
-                else if (c.SecondWord == "recall")
+                else if (c.SecondWord == "recall") // If second command word == recall...
                 {
-                    g.SendEngineToStation();
+                    g.SendEngineToStation(); // Return engine to station
                 }
-                else if (c.SecondWord == "refill")
+                else if (c.SecondWord == "refill") // If second command word == refill...
                 {
-                    g.RefillEngine();
+                    g.RefillEngine(); // Replenish engine coolant levels
                 }
-                else if (c.SecondWord == "goto")
+                else if (c.SecondWord == "goto") // If second command word == goto...
                 {
-                    // try to parse entered string 
+                    // Try to parse entered string 
                     int roomToGo;
                     if(Int32.TryParse(c.ThirdWord, out roomToGo))
                     {
-                        if(roomToGo > 0 && roomToGo <= Constants.MAX_NBR_ROOMS) //if room numer possible
+                        if(roomToGo > 0 && roomToGo <= Constants.MAX_NBR_ROOMS) // If room number is possible
                         {
-                            g.SendEngineToRoom(roomToGo - 1); //dispatch command
+                            g.SendEngineToRoom(roomToGo - 1); // Send the engine to the specified room
                         }
                         else
                         {
-                            Console.WriteLine("please enter a room number between 1 and {0}", Constants.MAX_NBR_ROOMS);
+                            Console.WriteLine("\nPlease enter a room number between 1 and {0}\n", Constants.MAX_NBR_ROOMS);
                         }
                     }
                     else

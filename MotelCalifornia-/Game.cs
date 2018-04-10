@@ -14,7 +14,7 @@ namespace MotelCalifornia
         FireEngine fireEngine = new FireEngine(1);
 
         
-        // game constructor to set is playing
+        // Game constructor is set to playing
         public Game()
         {
             IsPlaying = true;            
@@ -27,7 +27,7 @@ namespace MotelCalifornia
             if (IsPlaying)
             {
                 IsPlaying = !IsCheckGameEnd(); 
-                    // tick fire engine coolant if it i cooling a room (ONCALL)
+                    // Tick fire engine coolant if it is cooling a room (ONCALL)
                     if (fireEngine.CurrentFireEngineStatus == FireEngine.FireEngineStatus.ONCALL)
                     {
                         fireEngine.UseCoolant();
@@ -49,25 +49,25 @@ namespace MotelCalifornia
         }
 
         // This section dispatches command messages
-        // command room list
+        // Command room list
         public void CheckRooms()
         {
             motel.ListRoomTemperatures();
         }
-        // command room report
+        // Command room report
         public void ReportRooms()
         {
             motel.CalculateStates();
         }
-        // comand quit
+        // Command quit
         public void QuitGame()
         {
             Console.Clear();
-            Console.WriteLine("The Game Is Over your final score is:");
+            Console.WriteLine("The Game Is Over! Your final score is:");
             motel.CalculateStates();
         }
-        //fire engine commands
-        // command engine goto #
+        // Fire Engine Commands
+        // Command engine goto #
         public void SendEngineToRoom(int roomToSendTo)
         {
             fireEngine.SendEngineToRoom(motel.roomList[roomToSendTo]);

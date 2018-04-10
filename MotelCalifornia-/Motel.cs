@@ -101,49 +101,49 @@ namespace MotelCalifornia
         public void ListRoomTemperatures()
         {
             Console.WriteLine("");
-            for (int i = 0; i < roomList.Count; i++) // iterates through all reooms giving there number and temperature
+            for (int i = 0; i < roomList.Count; i++) // Iterates through all rooms giving their number and temperature
             {
                 string roomState;                
 
-                if (roomList[i].Temperature < (int)Constants.ROOM_STATES.DANGER) // calculate room state
+                if (roomList[i].Temperature < (int)Constants.ROOM_STATES.DANGER)
                 {
-                    roomState = "safe";
+                    roomState = "Safe";
                 }
                 else if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.DANGER && roomList[i].Temperature < (int)Constants.ROOM_STATES.SMOULDER)
                 {
-                    roomState = "danger";
+                    roomState = "Danger";
                 }
                 else if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.SMOULDER && roomList[i].Temperature < (int)Constants.ROOM_STATES.FIRE)
                 {
-                    roomState = "smoulder";
+                    roomState = "Smoulder";
                 }
                 else if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.FIRE && roomList[i].Temperature < (int)Constants.ROOM_STATES.BURNEDOUT)
                 {
-                    roomState = "fire";
+                    roomState = "Fire";
                 }
                 else if (roomList[i].Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT)
                 {
-                    roomState = "burndeout";
+                    roomState = "Burndeout";
                 }
                 else
                 {
-                    roomState = "none";
+                    roomState = "None";
                 }
                 Console.WriteLine("   Room Number: " + roomList[i].RoomNumber + "  Temperature: " + roomList[i].Temperature + "   State:  " + roomState);
             }
         }
 
 
-        // potentially move some of this logic this is checking the rooms against the enum constants and makes a call to print the results
+        // Potentially move some of this logic. This is checking the rooms against the enum constants and makes a call to print the results
         public void CalculateStates()
         {
-            // values to increment 
+            // Values to increment 
             int safeCount = 0;
             int dangerCount = 0;
             int smoulderCount = 0;
             int fireCount = 0;
             int burnedoutCount = 0;
-            for (int i = 0; i < roomList.Count; i++) // check room states and increment values
+            for (int i = 0; i < roomList.Count; i++) // Check room states and increment values
             {
                 if (roomList[i].Temperature < (int)Constants.ROOM_STATES.DANGER)
                 {
@@ -169,7 +169,7 @@ namespace MotelCalifornia
             PrintState(safeCount, dangerCount, smoulderCount, fireCount, burnedoutCount);
         }
 
-        // prints state count results
+        // Prints 'State Count' results for the game over screen
         private void PrintState(int safeCount, int dangerCount, int smoulderCount, int fireCount, int burnedoutCount)
         {
             Console.WriteLine("");

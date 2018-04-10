@@ -32,7 +32,7 @@ namespace MotelCalifornia
             CurrentFireEngineStatus = FireEngineStatus.STATIONED; // Initialize the fire engine status as STATIONED
         }
 
-        // refill fire engine coolant if already stationed
+        // Refill fire engine coolant if already stationed
         public void RefillEngine()
         {
             if(CurrentFireEngineStatus == FireEngineStatus.STATIONED)
@@ -45,53 +45,53 @@ namespace MotelCalifornia
             }
         }
         
-        // station the engine for refueling
+        // Station the engine for refueling
         public void StationEngine()
         {
             CurrentFireEngineStatus = FireEngineStatus.STATIONED;
             Console.WriteLine("Stationed Engine");
         }
 
-        // assign room and fire engine state via room identified in command
+        // Assign room and fire engine state via room identified in command
         public void SendEngineToRoom(Room coolingRoom)
         {
             RoomToCoolDown = coolingRoom;
             CurrentFireEngineStatus = FireEngineStatus.ONCALL;
-            Console.WriteLine("Sending The boys out to room " + RoomToCoolDown.RoomNumber);
+            Console.WriteLine("\nSending the boys out to room " + RoomToCoolDown.RoomNumber);
         }
 
-        // cooldown room if on call
+        // Cool down room if on call
         public void UseCoolant()
         {
-            // if room canheatup bool is true
+            // If room 'canheatup' bool is true
             if (RoomToCoolDown.CanHeatUp)
             {             
-                if ((CoolantLevel - Constants.COOLANT_EMIT_PER_TICK) >= 0) //if current coolant is more than the coolant per tick
+                if ((CoolantLevel - Constants.COOLANT_EMIT_PER_TICK) >= 0) // If current coolant is more than the coolant per tick...
                 {
-                    CoolantLevel -= Constants.COOLANT_EMIT_PER_TICK; //reduce by coolant & temp per tick
+                    CoolantLevel -= Constants.COOLANT_EMIT_PER_TICK; // Reduce by coolant & temp per tick
                     RoomToCoolDown.DecreaseRoomTemp(Constants.COOLANT_EMIT_PER_TICK);
 
                 }
-                else if (CoolantLevel > 0) // if coolant level is not empty
+                else if (CoolantLevel > 0) // If coolant level is not empty...
                 {
-                    CoolantLevel -= CoolantLevel; // reduce coolant and temp by remaining coolant
+                    CoolantLevel -= CoolantLevel; // Reduce coolant and temp by remaining coolant
                     RoomToCoolDown.DecreaseRoomTemp(CoolantLevel);
                 }
                 else
                 {
-                    CurrentFireEngineStatus = FireEngineStatus.FREE; // engine has no water set status to FREE breaks out of loop
-                    Console.WriteLine("engine out of water");
+                    CurrentFireEngineStatus = FireEngineStatus.FREE; // Engine has no water. Set status to FREE breaks out of loop
+                    Console.WriteLine("Engine out of water!");
                 }
 
             }                
                         
         }
-        // method for engine report
+        // Method for engine report
         public void EngineReport()
         {
-            string QuenchedOrBurndeout; // string to disply status of rooms to show if they can heatup
+            string QuenchedOrBurndeout; // String to display status of rooms to show if they can heatup
             Console.WriteLine("");
-            Console.WriteLine("Fire Engine report.");
+            Console.WriteLine("Fire Engine Report:");
             Console.WriteLine("EngineID:   {0}", EngineID);
             Console.WriteLine("Engine Status:   {0}", CurrentFireEngineStatus);
             Console.WriteLine("Coolant:   {0}", CoolantLevel);
@@ -100,13 +100,13 @@ namespace MotelCalifornia
                 Console.WriteLine("Room Cooling:    {0}", RoomToCoolDown.RoomNumber);
                 Console.WriteLine("Temperature of room:    {0}", RoomToCoolDown.Temperature);
                 
-                if(!RoomToCoolDown.CanHeatUp) // if room cant heat up...
+                if(!RoomToCoolDown.CanHeatUp)
                 {
-                    if(RoomToCoolDown.Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT) // state is burnedout
+                    if(RoomToCoolDown.Temperature >= (int)Constants.ROOM_STATES.BURNEDOUT)
                     {
                         QuenchedOrBurndeout = "Room is Burnedout";
                     }
-                    else // state is quenched
+                    else
                     {
                         QuenchedOrBurndeout = "Room is Quenched";
                     }
