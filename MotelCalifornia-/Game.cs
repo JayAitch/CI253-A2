@@ -13,6 +13,7 @@ namespace MotelCalifornia
         Motel motel = new Motel(); // Intializes the motel
         FireEngine fireEngine = new FireEngine(1);
 
+
         
         // Game constructor is set to playing
         public Game()
