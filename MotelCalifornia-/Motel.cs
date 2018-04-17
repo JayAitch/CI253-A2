@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 
 namespace MotelCalifornia
@@ -35,13 +34,14 @@ namespace MotelCalifornia
             AddToDelegate(roomList[fireStart]);
         }
 
-        // returning a bool based on rooms if any of the rooms are still able to heat up this returns true
+        // returning a bool based on rooms if any of the rooms are still able to heat up or the delegate is empty
+        // will return true if the delegate empty or all the rooms canheatup bools are false
         public bool CheckGameEnd()
         {
             bool isGameEndBool = true;
             for (int i = 0; i < roomList.Count(); i++)
             {
-                if(roomList[i].CanHeatUp == true && MotelRoomDelegate != null)
+                if(roomList[i].CanHeatUp == true && MotelRoomDelegate != null) // if all rooms !canheatup or delegate is empty
                 {
                     isGameEndBool = false;
                 }
@@ -91,7 +91,7 @@ namespace MotelCalifornia
             MotelRoomDelegate -= room.IncreaseRoomTemp;
             MotelRoomDelegate += room.IncreaseRoomTemp;            
         }
-
+        // removes the room in the param from the delegate
         private void RemoveFromDelegate(Room room)
         {
             MotelRoomDelegate -= room.IncreaseRoomTemp;

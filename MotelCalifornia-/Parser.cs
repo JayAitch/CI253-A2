@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MotelCalifornia
 {
@@ -12,7 +10,7 @@ namespace MotelCalifornia
         {
             // Take input and split on space or new line
             string inputLine = ""; 
-            inputLine = Console.ReadLine();
+            inputLine = Console.ReadLine().ToLower(); // lower case to reduce typing errors
             String[] values = inputLine.Split(' ', '\n');
 
             // Test up to 4 words in the array formed

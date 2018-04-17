@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MotelCalifornia
 {
@@ -38,16 +35,17 @@ namespace MotelCalifornia
         }
 
 
-
+        // generic no command text
         private void PrintNoCommandText()
         {
             Console.WriteLine("Command not recognised");
         }
 
 
-        // Checks command input of first word
+        // resolves command into methods
+        // boolean is returned based on valid command
         private Boolean ProcessCommand(Command c)
-        {
+        {        
             if (c.IsUnknown) // If the command input by the user is unknown...
             {
                 PrintNoCommandText(); // Print the following line
@@ -55,20 +53,23 @@ namespace MotelCalifornia
             }
             if(c.CommandWord == "room") // If command word == room...
             {
-                if(c.SecondWord == "list") // If second command word == list...
+
+                if (c.SecondWord == "list") // If second command word == list...
                 {
                     g.CheckRooms(); // Check room states and display
                     return true;
                 }
-                else if(c.SecondWord == "report") // If second command word == report...
+                else if (c.SecondWord == "report") // If second command word == report...
                 {
 
                     g.ReportRooms(); // Count the different room states and display
                     return true;
                 }
+
                 else
                 {
                     Console.WriteLine("\nRoom command not recognised: please use list or report\n");
+                    return false;
                 }
             }
             else if (c.CommandWord == "quit") // If command word == quit...
