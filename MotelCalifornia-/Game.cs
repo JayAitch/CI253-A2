@@ -6,14 +6,16 @@ namespace MotelCalifornia
     {
         public bool IsPlaying { get;  set; }
         public int RefreshRate = Constants.FAST_GAME_SPEED; // Sets the game speed to FAST
-        Motel motel = new Motel(); // Intializes the motel
-        FireEngine fireEngine = new FireEngine(1);
+        private Motel motel;
+        private FireEngine fireEngine;
 
 
         
         // Game constructor is set to playing
         public Game()
         {
+            motel = new Motel();// Intializes the motel
+            fireEngine = new FireEngine(1);// Intialize fireengine
             IsPlaying = true;            
         }
 
@@ -43,7 +45,11 @@ namespace MotelCalifornia
         // Private method to check for game end everytick using method inside motel
         private bool IsCheckGameEnd()
         {
-            return  motel.CheckGameEnd();
+            if (IsPlaying)
+            {
+                return motel.CheckGameEnd();
+            }
+            return false;     
         }
 
         // This section dispatches command messages
