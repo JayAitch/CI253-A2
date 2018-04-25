@@ -52,7 +52,6 @@ namespace MotelCalifornia
         }
 
       // Reduces temperature per coolant used
-      // Returns CanHeatUp
         public bool DecreaseRoomTemp(int coolantUsed)
         {
             // If room state leaves danger threshold, set 'canheatup' to false
