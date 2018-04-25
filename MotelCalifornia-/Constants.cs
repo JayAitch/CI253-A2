@@ -22,6 +22,7 @@ namespace MotelCalifornia
         public static readonly int COOLANT_CAPACITY = 600; // Fire engine max coolant capacity is set to 600
         public static readonly int COOLANT_EMIT_PER_TICK = 40; // Every tick, 40 coolant is subtracted from the current capacity
         public static readonly int COOLANT_REDUCE_EFFECT = 1; // Used to reduce temperature of rooms
+        public static readonly int FIRE_ENGINE_ID = 505; //Id of the engine passed into the constructor
 
     }
 }

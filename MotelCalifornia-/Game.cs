@@ -14,7 +14,7 @@ namespace MotelCalifornia
         public Game()
         {
             motel = new Motel();// Intializes the motel
-            fireEngine = new FireEngine(1);// Intialize fireengine
+            fireEngine = new FireEngine(Constants.FIRE_ENGINE_ID);// Intialize fireengine
             IsPlaying = true;            
         }
 
