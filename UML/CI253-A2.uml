@@ -4360,7 +4360,7 @@
 <XPD:ATTR name="Left" type="integer">224</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">608</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">106</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">82</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">95</XPD:ATTR>
 <XPD:REF name="Model">hZfo5Rh8/0ia3MdqC3bECgAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="acmB6mvKZUmY8cWLs5M56gAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="Kdrd+my2ek+8jiBpZQDc+gAA">
@@ -4627,7 +4627,7 @@
 <XPD:OBJ name="OwnedViews[9]" type="UMLAssociationView" guid="s5zsOInclkCwWNk1UfAkwQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">277,689;278,768</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">277,702;278,768</XPD:ATTR>
 <XPD:REF name="Model">ITzxqw3HkkKLTCjgjNl8BgAA</XPD:REF>
 <XPD:REF name="Head">3pEN8FGJSECdqb/iXyr7tAAA</XPD:REF>
 <XPD:REF name="Tail">IBDID1ivhk+FK4XKv81I9QAA</XPD:REF>
@@ -5362,7 +5362,7 @@
 <XPD:OBJ name="OwnedViews[19]" type="UMLAssociationView" guid="CUVcVUFfI0mLkKZ2jp1JzwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">329,648;496,648;496,566</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">329,653;496,648;496,566</XPD:ATTR>
 <XPD:REF name="Model">ERgQlreGx0e7uCRAOogVEQAA</XPD:REF>
 <XPD:REF name="Head">s/jJq2y4jEa5eJyHGBjA8wAA</XPD:REF>
 <XPD:REF name="Tail">IBDID1ivhk+FK4XKv81I9QAA</XPD:REF>
@@ -5696,9 +5696,14 @@
 <XPD:REF name="Associations[1]">Es9eFp2f0k+F3vfFEfuUaAAA</XPD:REF>
 <XPD:REF name="Associations[2]">JrLCfpxDok6+JQ4bF5cUNwAA</XPD:REF>
 <XPD:REF name="Associations[3]">J79raWSRs0ybHBMqb6zQPwAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">1</XPD:ATTR>
+<XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="VctsoTcEtkynvV2ZcRu1KwAA">
-<XPD:ATTR name="Name" type="string">Game</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">GameRef</XPD:ATTR>
+<XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
+<XPD:REF name="Owner">hZfo5Rh8/0ia3MdqC3bECgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="60nrR/HEE0iMqGrUDXmL6QAA">
+<XPD:ATTR name="Name" type="string">Parser</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">hZfo5Rh8/0ia3MdqC3bECgAA</XPD:REF>
 </XPD:OBJ>
@@ -5988,7 +5993,7 @@
 <XPD:REF name="Views[3]">+Wd7KyngPkigyHnGpYcOaAAA</XPD:REF>
 <XPD:ATTR name="#Connections" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Connections[0]" type="UMLAssociationEnd" guid="JrLCfpxDok6+JQ4bF5cUNwAA">
-<XPD:ATTR name="IsNavigable" type="boolean">False</XPD:ATTR>
+<XPD:ATTR name="Aggregation" type="UMLAggregationKind">akAggregate</XPD:ATTR>
 <XPD:ATTR name="Multiplicity" type="string">1</XPD:ATTR>
 <XPD:REF name="Association">ITzxqw3HkkKLTCjgjNl8BgAA</XPD:REF>
 <XPD:REF name="Participant">hZfo5Rh8/0ia3MdqC3bECgAA</XPD:REF>
@@ -6049,6 +6054,7 @@
 <XPD:ATTR name="#Connections" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Connections[0]" type="UMLAssociationEnd" guid="zTqdEAevV06PRNRqzmtBmgAA">
 <XPD:ATTR name="IsNavigable" type="boolean">False</XPD:ATTR>
+<XPD:ATTR name="Aggregation" type="UMLAggregationKind">akAggregate</XPD:ATTR>
 <XPD:ATTR name="Multiplicity" type="string">1</XPD:ATTR>
 <XPD:REF name="Association">HNARaZ9pQUmTXJ3Aq6iowAAA</XPD:REF>
 <XPD:REF name="Participant">kSVL8xOLn0Sv0RSLLE16/AAA</XPD:REF>
@@ -6059,6 +6065,7 @@
 <XPD:REF name="Views[3]">6B4fv8hCm0eqPg8h4JSKWgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="h+bR0ZHFe0KlXOIqHAMeTAAA">
+<XPD:ATTR name="IsNavigable" type="boolean">False</XPD:ATTR>
 <XPD:ATTR name="Multiplicity" type="string">1</XPD:ATTR>
 <XPD:REF name="Association">HNARaZ9pQUmTXJ3Aq6iowAAA</XPD:REF>
 <XPD:REF name="Participant">glDLPXIg7UO2kGkAOeYZwgAA</XPD:REF>
@@ -6168,7 +6175,7 @@
 <XPD:REF name="Views[3]">dqGG3Yu2fU6IccZJIs1alwAA</XPD:REF>
 <XPD:ATTR name="#Connections" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Connections[0]" type="UMLAssociationEnd" guid="8mX2HuTShEaibu3TF13wFQAA">
-<XPD:ATTR name="IsNavigable" type="boolean">False</XPD:ATTR>
+<XPD:ATTR name="Aggregation" type="UMLAggregationKind">akAggregate</XPD:ATTR>
 <XPD:ATTR name="Multiplicity" type="string">1</XPD:ATTR>
 <XPD:REF name="Association">nI+VWtUNLkav5Gr1RZ+F0AAA</XPD:REF>
 <XPD:REF name="Participant">pLHR67cn4ECx2mUhIPXBwAAA</XPD:REF>

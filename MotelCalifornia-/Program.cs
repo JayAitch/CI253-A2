@@ -45,13 +45,19 @@ namespace MotelCalifornia
             Console.Clear();
             if (g.IsPlaying)
             {
+                CreateAndStartTimer(g);
                 
-                TimerCallback timerCallBack = g.GameTickMethod; // Initialize the timer callback
-                Timer tmr = new Timer(timerCallBack, null, 1000, RefreshRate); // Intialize the timer (uses callback and game speed)
-
-                InputHandler inputHandler = new InputHandler(g); // Initialize the input handler
-                inputHandler.GetUserInput(); // Call the following method for user input
             }
+        }
+
+        static void CreateAndStartTimer(Game g)
+        {
+            TimerCallback timerCallBack = g.GameTickMethod; // Initialize the timer callback
+            Timer tmr = new Timer(timerCallBack, null, 1000, RefreshRate); // Intialize the timer (uses callback and game speed)
+
+            InputHandler inputHandler = new InputHandler(g); // Initialize the input handler
+            inputHandler.GetUserInput(); // Call the following method for user input
+
         }
     }
 }
