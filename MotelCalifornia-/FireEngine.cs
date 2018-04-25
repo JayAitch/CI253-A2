@@ -9,7 +9,7 @@ namespace MotelCalifornia
     class FireEngine
     {
         // Coolant Level of fire engine
-        public int CoolantLevel { get; private set; }
+        private int CoolantLevel { get;  set; }
 
         // Different states of the fire engine: FREE enables deployment, ONCALL means it's out of the station, and STATIONED means it can be refilled
         public enum FireEngineStatus { FREE, ONCALL, STATIONED }; 
@@ -38,10 +38,11 @@ namespace MotelCalifornia
             if(CurrentFireEngineStatus == FireEngineStatus.STATIONED)
             {
                 CoolantLevel = Constants.COOLANT_CAPACITY;
+                Console.WriteLine("\nFire Engine refilled to: {0}",CoolantLevel);
             }
             else
             {
-                Console.WriteLine("Fire Engine Not Stationed!");
+                Console.WriteLine("\nFire Engine Not Stationed!");
             }
         }
         
@@ -49,7 +50,7 @@ namespace MotelCalifornia
         public void StationEngine()
         {
             CurrentFireEngineStatus = FireEngineStatus.STATIONED;
-            Console.WriteLine("Stationed Engine");
+            Console.WriteLine("\nStationed Engine");
         }
 
         // Assign room and fire engine state via room identified in command

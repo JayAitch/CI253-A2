@@ -52,7 +52,8 @@ namespace MotelCalifornia
         }
 
       // Reduces temperature per coolant used
-        public void DecreaseRoomTemp(int coolantUsed)
+      // Returns CanHeatUp
+        public bool DecreaseRoomTemp(int coolantUsed)
         {
             // If room state leaves danger threshold, set 'canheatup' to false
             if (Temperature < (int)Constants.ROOM_STATES.DANGER)
@@ -67,10 +68,10 @@ namespace MotelCalifornia
                 Temperature -= coolantUsed * Constants.COOLANT_REDUCE_EFFECT;
                 if (Temperature < (int)Constants.ROOM_STATES.DANGER)
                 {
-                    Console.WriteLine("Room was Quenched");
                     CanHeatUp = false;
                 }
             }
+            return CanHeatUp;
         }
     }
 }
