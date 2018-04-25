@@ -14,7 +14,7 @@ namespace MotelCalifornia
         //public RoomState CurrentRoomState { get; private set; }
 
         // Temporarily changed the set accessibility for testing
-        public int Temperature { get; set; } // Used to get and set temperature
+        public int Temperature { get; private set; } // Used to get and set temperature
         public int RoomNumber { get; private set; } // Used to get and set room number
         public Boolean CanHeatUp { get; private set; } // Used to prevent the room being added to the list if it is burnedout or quenched 
 
