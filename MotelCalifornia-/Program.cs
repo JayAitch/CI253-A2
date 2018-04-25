@@ -5,6 +5,7 @@ namespace MotelCalifornia
 {
     class Program
     {
+        private static int RefreshRate = Constants.FAST_GAME_SPEED; // Sets the game speed to FAST
         static void Main(string[] args)
         {
             StartScreen();
@@ -46,7 +47,7 @@ namespace MotelCalifornia
             {
                 
                 TimerCallback timerCallBack = g.GameTickMethod; // Initialize the timer callback
-                Timer tmr = new Timer(timerCallBack, null, 1000, g.RefreshRate); // Intialize the timer (uses callback and game speed)
+                Timer tmr = new Timer(timerCallBack, null, 1000, RefreshRate); // Intialize the timer (uses callback and game speed)
 
                 InputHandler inputHandler = new InputHandler(g); // Initialize the input handler
                 inputHandler.GetUserInput(); // Call the following method for user input

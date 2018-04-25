@@ -5,7 +5,6 @@ namespace MotelCalifornia
     class Game
     {
         public bool IsPlaying { get;  set; }
-        public int RefreshRate = Constants.FAST_GAME_SPEED; // Sets the game speed to FAST
         private Motel motel;
         private FireEngine fireEngine;
 
