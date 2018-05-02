@@ -74,9 +74,9 @@ namespace MotelCalifornia
 
                 }
                 else if (CoolantLevel > 0) // If coolant level is not empty...
-                {
-                    CoolantLevel -= CoolantLevel; // Reduce coolant and temp by remaining coolant
+                {                    
                     RoomToCoolDown.DecreaseRoomTemp(CoolantLevel);
+                    CoolantLevel -= CoolantLevel; // Reduce coolant and temp by remaining coolant
                 }
                 else
                 {
